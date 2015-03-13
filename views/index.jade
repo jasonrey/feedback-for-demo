@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Feedback
+        link(rel="stylesheet", href="css/bootstrap.min.css")
+        script(type="text/javascript", src="js/jquery.min.js")
+
+        script(type="text/coffeescript", src="coffee/index.coffee")
+        link(rel="stylesheet/less", type="text/css", href="less/index.less")
+
+        script(type="text/javascript", src="js/less.min.js")
+        script(type="text/javascript", src="js/coffee-script.js")
+    body
+        .container
+            .jumbotron
+                h1.title Feedback for Demo
+
+        .container
+            .panel.panel-warning
+                .panel-heading
+                    h2 Feedback
+                .panel-body.feedback
+                    .loading Loading feedbacks...
+
+                    ol
+
+                    .actions
+                        button.btn.btn-default.addfeedback + Add feedback
+
+                    li.lineblock
+                        span.text
+                        span.actions
+                            button.btn.btn-link.btn-xs
+                                span.glyphicon.glyphicon-edit
+                            button.btn.btn-link.btn-xs
+                                span.glyphicon.glyphicon-remove

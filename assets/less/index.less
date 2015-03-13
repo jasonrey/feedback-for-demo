@@ -1,0 +1,63 @@
+body {
+    .container {
+        .jumbotron {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+
+            h1.title {
+                font-size: 48px;
+            }
+        }
+    }
+
+    .feedback {
+        ol {
+            display: none;
+            padding-left: 0;
+            list-style-position: inside;
+
+            li {
+                padding: 15px;
+
+                .actions {
+                    float: right;
+                    display: none;
+                }
+
+                &:hover {
+                    background-color: #f5f5f5;
+
+                    .actions {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .actions {
+            display: none;
+
+            .addfeedback {
+                font-weight: bold;
+            }
+        }
+
+        .lineblock {
+            display: none;
+        }
+
+        &.loaded {
+            .loading {
+                display: none;
+            }
+
+            ol {
+                display: block;
+            }
+
+            .actions {
+                display: block;
+            }
+        }
+    }
+}
