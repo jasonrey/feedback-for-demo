@@ -4,10 +4,10 @@ $ ->
     if $frame.length is 0
         return
 
-    $ "link"
+    $ "<link />"
         .attr "rel", "stylesheet"
         .attr "href", "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-        .appendTo "head"
+        .prependTo "head"
 
     # Initialise and generate the html
 
