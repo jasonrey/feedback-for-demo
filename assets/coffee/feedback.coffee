@@ -4,10 +4,14 @@ $ ->
     if $frame.length is 0
         return
 
-    $ "<link />"
-        .attr "rel", "stylesheet"
-        .attr "href", "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-        .prependTo "head"
+    bootstrapcss = $ 'link[href*="bootstrap.min.css"]'
+
+    # Only inject boostrap css if the page did not load it
+    if bootstrapcss.length is 0
+        $ "<link />"
+            .attr "rel", "stylesheet"
+            .attr "href", "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            .prependTo "head"
 
     # Initialise and generate the html
 
