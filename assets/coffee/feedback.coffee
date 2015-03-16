@@ -123,16 +123,13 @@ $ ->
     $list.on "click", ".delete", (event) ->
         button = $ @
         block = button.parents ".lineblock"
-        block.removeClass "completed"
+        block.remove()
 
         id = block.data "id"
 
         feedback
             id: id
             mode: "delete"
-        .done (response) ->
-            console.log block
-            block.remove()
 
     feedback
         mode: "load"
