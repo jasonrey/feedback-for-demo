@@ -7,6 +7,7 @@ publicFolders = [
     "public"
     "public/js"
     "public/css"
+    "public/api"
 ]
 
 libraries =
@@ -20,6 +21,7 @@ libraries =
     ]
     "fonts": [
         "bootstrap/fonts/glyphicons-halflings-regular.woff"
+        "bootstrap/fonts/glyphicons-halflings-regular.woff2"
     ]
 
 task "development",
@@ -43,6 +45,7 @@ task "phpbuild",
         invoke "compilejs"
         invoke "compilecss"
         invoke "compileHTML"
+        invoke "copyAPI"
 
 task "phpbeautybuild",
     "PHP build beautifully.",
@@ -52,6 +55,7 @@ task "phpbeautybuild",
         invoke "compilebeautyjs"
         invoke "compilebeautycss"
         invoke "compileHTML"
+        invoke "copyAPI"
 
 task "prepareFolders",
     "Creates the necessary folders for further process.",
@@ -62,6 +66,8 @@ task "prepareFolders",
 task "copyLibraries",
     "Copy static libraries to public folder.",
     ->
+        fs.mkdirSync "#{pwd}/public" unless fs.existsSync "#{pwd}/public"
+
         for type, files of libraries
             fs.mkdirSync "#{pwd}/public/#{type}" unless fs.existsSync "#{pwd}/public/#{type}"
             for file in files
@@ -98,6 +104,7 @@ task "compilebeautyjs",
     ->
         invoke "prepareFolders"
 
+        fs.mkdirSync "#{pwd}/public" unless fs.existsSync "#{pwd}/public"
         fs.mkdirSync "#{pwd}/public/js" unless fs.existsSync "#{pwd}/public/js"
 
         exec "coffee --compile --bare --output #{pwd}/public/js #{pwd}/assets/coffee"
@@ -139,3 +146,9 @@ task "compileHTML",
             content = content.replace /script\(type="text\/coffeescript", src="coffee\/(.*)\.coffee"\)/, 'script(type="text/javascript", src="js/$1.js")'
 
             fs.writeFileSync "#{pwd}/public/" + filename + ".html", jade.render(content, options), encoding: "utf8"
+
+task "copyAPI",
+    "Copies additional API files.",
+    ->
+        invoke "prepareFolders"
+        exec "cp #{pwd}/assets/api/* #{pwd}/public/api/"
