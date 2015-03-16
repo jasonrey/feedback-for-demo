@@ -45,7 +45,13 @@ html
                         = '<link rel="stylesheet/css type="text/css" href="css/feedback.css" />'
                         br
                         br
-                        = '<div id="feedback"></div>'
+                        = '<div id="feedback" data-identifier="{data}"></div>'
+                    ol
+                        li jQuery is required
+                        li Bootstrap CSS is injected dynamically
+                        li
+                            code data-identifier
+                            = " is optional, defaulting to 'data'"
 
         .container
             .panel.panel-default
