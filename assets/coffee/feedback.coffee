@@ -13,7 +13,7 @@ $ ->
 
     html = ""
 
-    html += '<div class="feedback">'
+    html += '<div id="feedback">'
     html += '    <div class="loading">Loading feedbacks...</div>'
     html += '    <ol></ol>'
     html += '    <form>'
@@ -57,16 +57,17 @@ $ ->
 
     $list = $frame.find "> ol"
     $block = $frame.find "> li.lineblock"
-    $form = $frame.find "> form"
 
     feedback = (data) ->
+        data.identifier = $frame.data "identifier"
+
         dfd = $.ajax
             url: "api/feedback.php"
             type: "post"
             data: data
             dataType: "json"
 
-    $form.on "submit", (event) ->
+    $frame.on "submit", "> form", (event) ->
         event.preventDefault()
 
         form = $ @
@@ -103,7 +104,7 @@ $ ->
             name.val ""
             form.removeClass "submitting"
 
-    $list.on "click", ".complete", (event) ->
+    $frame.on "click", ".complete", (event) ->
         button = $ @
         block = button.parents ".lineblock"
         block.addClass "completed"
@@ -114,7 +115,7 @@ $ ->
             id: id
             mode: "complete"
 
-    $list.on "click", ".uncomplete", (event) ->
+    $frame.on "click", ".uncomplete", (event) ->
         button = $ @
         block = button.parents ".lineblock"
         block.removeClass "completed"
@@ -125,7 +126,7 @@ $ ->
             id: id
             mode: "uncomplete"
 
-    $list.on "click", ".delete", (event) ->
+    $frame.on "click", ".delete", (event) ->
         button = $ @
         block = button.parents ".lineblock"
         block.remove()

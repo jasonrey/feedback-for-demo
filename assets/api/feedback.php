@@ -1,7 +1,5 @@
 <?php
 
-$file = '../data.json';
-
 $data = array();
 $map = array();
 
@@ -86,7 +84,7 @@ class Feedback
 
 class Feedbacks
 {
-    public static $file = '../data.json';
+    public static $file = '../.data/data.json';
     public static $map = array();
     public static $feedbacks = array();
 
@@ -97,6 +95,10 @@ class Feedbacks
         if (file_exists(self::$file)) {
             $contents = file_get_contents(self::$file);
         } else {
+            if (!file_exists('../.data')) {
+                mkdir('../.data');
+            }
+
             file_put_contents(self::$file, '');
         }
 
@@ -139,9 +141,17 @@ class Feedbacks
     }
 }
 
-Feedbacks::init();
-
 $post = $_POST;
+
+$file = '../.data/data.json';
+
+if (!empty($post['identifier'])) {
+    $file = '../.data/' . $post['identifier'] . '.json';
+}
+
+Feedbacks::$file = $file;
+
+Feedbacks::init();
 
 $mode = $post['mode'];
 
