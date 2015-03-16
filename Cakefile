@@ -16,13 +16,6 @@ libraries =
         "jquery/dist/jquery.min.js"
         "coffee-script/extras/coffee-script.js"
     ]
-    "css": [
-        "bootstrap/dist/css/bootstrap.min.css"
-    ]
-    "fonts": [
-        "bootstrap/fonts/glyphicons-halflings-regular.woff"
-        "bootstrap/fonts/glyphicons-halflings-regular.woff2"
-    ]
 
 task "development",
     "Development build.",
