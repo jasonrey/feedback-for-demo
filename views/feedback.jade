@@ -1,0 +1,131 @@
+doctype html
+html
+    head
+        title Feedback
+        link(rel="stylesheet", href="css/bootstrap.min.css")
+        script(type="text/javascript", src="js/jquery.min.js")
+
+        script(type="text/coffeescript", src="coffee/feedback.coffee")
+        link(rel="stylesheet/less", type="text/css", href="less/feedback.less")
+
+        script(type="text/javascript", src="js/less.min.js")
+        script(type="text/javascript", src="js/coffee-script.js")
+    body
+        .container
+            .jumbotron
+                h1.title Feedback for Demo
+
+        .container
+            .panel.panel-warning
+                .panel-heading
+                    h2 Feedback
+                .panel-body#feedback
+
+        .container
+            .panel.panel-default
+                .panel-heading
+                    h2 Required files
+                .panel-body
+                    pre
+                        = 'js/feedback.js'
+                        br
+                        = 'css/feedback.css'
+                        br
+                        = 'api/feedback.php'
+
+        .container
+            .panel.panel-default
+                .panel-heading
+                    h2 API
+                .panel-body
+                    pre
+                        = '<script type="text/javascript" src="js/feedback.js"></script>'
+                        br
+                        = '<link rel="stylesheet/css type="text/css" href="css/feedback.css" />'
+                        br
+                        br
+                        = '<div id="feedback"></div>'
+
+        .container
+            .panel.panel-default
+                .panel-heading
+                    h2 Generated HTML
+                .panel-body
+                    pre
+                        = '<div id="feedback">'
+                        br
+                        = '    <div class="loading">Loading feedbacks...</div>'
+                        br
+
+                        = '    <ol></ol>'
+                        br
+
+                        = '    <form>'
+                        br
+                        = '        <div class="wait">'
+                        br
+                        = '            <span>Please wait a while for me to submit your feedback.</span>'
+                        br
+                        = '        </div>'
+                        br
+                        = '        <div class="form">'
+                        br
+                        = '            <h3>Add Feedback</h3>'
+                        br
+                        = '            <div class="form-group">'
+                        br
+                        = '                <label>Description</label>'
+                        br
+                        = '                <input class="form-control" type="text" name="description" />'
+                        br
+                        = '            </div>'
+                        br
+                        = '            <div class="form-group">'
+                        br
+                        = '                <label>Name</label>'
+                        br
+                        = '                <input class="form-control" type="text" name="name" />'
+                        br
+                        = '            </div>'
+                        br
+                        = '            <div class="form-group text-right">'
+                        br
+                        = '                <button class="btn btn-success">Submit</button>'
+                        br
+                        = '            </div>'
+                        br
+                        = '        </div>'
+                        br
+                        = '    </form>'
+                        br
+                        = '    <li class="lineblock">'
+                        br
+                        = '        <span class="text description"></span>'
+                        br
+                        = '        <span class="text actions">'
+                        br
+                        = '            <button class="btn btn-link btn-xs complete">'
+                        br
+                        = '                <span class="glyphicon glyphicon-ok"></span>'
+                        br
+                        = '            </button>'
+                        br
+                        = '            <button class="btn btn-link btn-xs uncomplete">'
+                        br
+                        = '                <span class="glyphicon glyphicon-remove"></span>'
+                        br
+                        = '            </button>'
+                        br
+                        = '            <button class="btn btn-link btn-xs delete">'
+                        br
+                        = '                <span class="glyphicon glyphicon-trash"></span>'
+                        br
+                        = '            </button>'
+                        br
+                        = '        </span>'
+                        br
+                        = '        <span class="text name"></span>'
+                        br
+                        = '    </li>'
+                        br
+                        = '</div>'

@@ -1,5 +1,55 @@
 $ ->
-    $frame = $ ".feedback"
+    $frame = $ "#feedback"
+
+    if $frame.length is 0
+        return
+
+    # Initialise and generate the html
+
+    html = ""
+
+    html += '<div class="feedback">'
+    html += '    <div class="loading">Loading feedbacks...</div>'
+    html += '    <ol></ol>'
+    html += '    <form>'
+    html += '        <div class="wait">'
+    html += '            <span>Please wait a while for me to submit your feedback.</span>'
+    html += '        </div>'
+    html += '        <div class="form">'
+    html += '            <h3>Add Feedback</h3>'
+    html += '            <div class="form-group">'
+    html += '                <label>Description</label>'
+    html += '                <input class="form-control" type="text" name="description" />'
+    html += '            </div>'
+    html += '            <div class="form-group">'
+    html += '                <label>Name</label>'
+    html += '                <input class="form-control" type="text" name="name" />'
+    html += '            </div>'
+    html += '            <div class="form-group text-right">'
+    html += '                <button class="btn btn-success">Submit</button>'
+    html += '            </div>'
+    html += '        </div>'
+    html += '    </form>'
+    html += '    <li class="lineblock">'
+    html += '        <span class="text description"></span>'
+    html += '        <span class="text actions">'
+    html += '            <button class="btn btn-link btn-xs complete">'
+    html += '                <span class="glyphicon glyphicon-ok"></span>'
+    html += '            </button>'
+    html += '            <button class="btn btn-link btn-xs uncomplete">'
+    html += '                <span class="glyphicon glyphicon-remove"></span>'
+    html += '            </button>'
+    html += '            <button class="btn btn-link btn-xs delete">'
+    html += '                <span class="glyphicon glyphicon-trash"></span>'
+    html += '            </button>'
+    html += '        </span>'
+    html += '        <span class="text name"></span>'
+    html += '    </li>'
+    html += '</div>'
+
+    htmlBlock = $ html
+    $frame.html htmlBlock.html()
+
     $list = $frame.find "> ol"
     $block = $frame.find "> li.lineblock"
     $form = $frame.find "> form"
