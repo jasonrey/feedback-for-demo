@@ -24,13 +24,30 @@ html
 
                     ol
 
-                    .actions
-                        button.btn.btn-default.addfeedback + Add feedback
+                    form
+                        .wait
+                            span Please wait a while for me to submit your feedback.
+
+                        .form
+                            h3 Add Feedback
+                            .form-group
+                                label Description
+                                input.form-control(type="text", name="description")
+                            .form-group
+                                label Name
+                                input.form-control(type="text", name="name")
+                            .form-group.text-right
+                                button.btn.btn-success Submit
 
                     li.lineblock
-                        span.text
+                        span.text.description
                         span.actions
-                            button.btn.btn-link.btn-xs
-                                span.glyphicon.glyphicon-edit
-                            button.btn.btn-link.btn-xs
+                            //- button.btn.btn-link.btn-xs.edit
+                            //-     span.glyphicon.glyphicon-edit
+                            button.btn.btn-link.btn-xs.complete
+                                span.glyphicon.glyphicon-ok
+                            button.btn.btn-link.btn-xs.uncomplete
                                 span.glyphicon.glyphicon-remove
+                            button.btn.btn-link.btn-xs.delete
+                                span.glyphicon.glyphicon-trash
+                        span.text.name
